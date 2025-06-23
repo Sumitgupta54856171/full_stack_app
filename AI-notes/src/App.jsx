@@ -6,6 +6,9 @@ import Signup from "./component/Signup";
 import Home from "./component/Home";
 import { ContentContext } from "./context/Content";
 import axios from "axios";
+import Accessories from "./component/Accessories";
+import Electron from "./component/Electron";
+import Apparel from "./component/Apparel";
 function App(){
 const [user,setUser] =useState(false);
 useEffect(()=>{
@@ -28,6 +31,9 @@ checkAuthentication();
    <Route path="/" element={<Home/>}></Route>
     <Route path="/login" element={<Login/>}></Route>
     <Route path="/signup" element={<Signup/>}></Route>
+  <Route path="/accessories" element={<Accessories/>}></Route>
+  <Route path="/Electronic" element={<Electron/>}></Route>
+<Route path="/Apparel" element={<Apparel/>}></Route>
    </Routes>
   </div>
   </ContentContext.Provider>
