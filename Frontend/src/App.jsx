@@ -24,7 +24,7 @@ useEffect(()=>{
 checkAuthentication();
 },[user])
   return(<>
-  <ContentContext.Provider value={{user,setUser}}>
+  <ContentContext.Provider value={{user}}>
   <div className="h-screen w-full overflow-auto">
   <Navbar></Navbar>
   <Routes>

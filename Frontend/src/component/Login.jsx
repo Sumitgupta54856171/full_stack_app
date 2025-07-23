@@ -3,7 +3,9 @@ import axios from 'axios';
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import { redirect } from "react-router-dom";
 function Login(){
-
+const [show ,setshow] = useState(false);
+const [message,setMessage] = useState('');
+const [error,setError] = useState('');
 const [email,setEmail] =useState('');
 const [password,setPassword] = useState('');
 const [visible,setVisible] =useState(false);
@@ -17,10 +19,16 @@ async function handleSubmit(event){
         password
     }
     const response = await axios.post('http://localhost:3000/api/login',data, {withCredentials: true})
-    console.log(response);
-    console.log('successfull')
+    console.log(response)
+    if(response.data){
+        setshow(true);
+    }
+        console.log('successfull')
     const token = response.data.user;
     localStorage.setItem('token',token);
+    console.log("message",response.data.message);
+    setMessage(response.data.message);
+    setError('');
     if(token){
       
         redirect('/');
@@ -30,6 +38,7 @@ async function handleSubmit(event){
     }
 }
 return(<>
+{show && <header className="bg-red-400/70 w-50 h-10 rounded-2xl text-white flex flex-row justify-center items-center mx-4 px-4 gap-2">{message} <button onClick={()=>setshow(false)}>ckick</button></header>}
 <div className="flex items-center justify-center min-h-screen p-4">
  <div className="w-full max-w-sm bg-white rounded-lg shadow-lg p-6 md:p-8">
 

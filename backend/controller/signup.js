@@ -1,4 +1,4 @@
-
+const bcrypt = require('bcryptjs');
 const postgresql = require('../config/postgresql');
 async function signup(req,res){
     console.log("signup called");
@@ -12,15 +12,16 @@ async function signup(req,res){
         res.status(400).json({error: "Email already exists"});
     console.log("email exist already")
     }else{
+        const hashedPassword = await bcrypt.hash(password, 10);
            console.log("email not exist")
             const insertQuery = `INSERT INTO users (email, username, password) VALUES ($1, $2, $3) RETURNING *`;
-            const insertValues = [email, username, password];   
+            const insertValues = [email, username, hashedPassword];   
             postgresql.query(insertQuery, insertValues)
             .then(user => {
                 console.log("user created", user);
             })
             console.log("user created");
-            res.json({email:email})
+            res.json({email:email,message: "Signup successful"});
     }   
     
 }

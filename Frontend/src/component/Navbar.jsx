@@ -26,8 +26,7 @@ function Navbar(){
 <h1 className="text-2xl ">NevStore</h1>
 <div className="w-full border-b border-slate-400 bg-stone-600 flex flex-col sm:flex-row items-center text-white relative z-20 px-4 py-4 sm:px-6 lg:px-8 justify-between">
                 <div className="flex items-center w-full sm:w-auto justify-between mb-4 sm:mb-0">
-                    <h1 className="text-2xl font-bold tracking-wide mr-8">NevStore</h1>
-                    {/* Search Bar - Visible on larger screens, collapsed on small screens */}
+                   
                     <form className="relative hidden sm:flex items-center">
                         <input
                             type="text"

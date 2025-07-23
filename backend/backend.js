@@ -5,7 +5,6 @@ const redis = require('./config/redis');
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
 const controller = require('./controller/login');
-const client = require('./config/mongoose');
 const cors = require('cors');
 const path = require('path');
 const jwtverify = require('./controller/jwt');
@@ -27,7 +26,7 @@ app.get('/',(req,res)=>{
 })
 app.post('/api/login',controller.login);
 app.get('/api/logout',controller.logout);
-app.get('/api/verify',jwtverify.verifyToken)
+app.get('/api/verify',jwtverify.verifyToken);
 app.get('/',(req,res)=>{ 
     console.log("hello world")
 })
@@ -36,7 +35,7 @@ app.listen(port,()=>{
     console.log(`servers is running on port ${port}`)
     console.log(process.env.uri)
     console.log(process.env.PORT)
-    client();
+   
     postgresql;
     redis;
 })
